@@ -11,16 +11,8 @@ public class E1 {
      dots and commas.
     */
     public static void main(String[] args) {
-        List<String> list = List.of(
-                "as",
-                "As",
-                "as as",
-                "As as",
-                "as.as",
-                "As.as",
-                "as,as",
-                "As,as"
-        );
+        List<String> list =
+                List.of("as", "As", "as as", "As as", "as.as", "As.as", "as,as", "As,as");
 
         System.out.println(calculateAvgStringLength(list));
         calculateAvgStringLengthStream(list);
@@ -29,8 +21,7 @@ public class E1 {
     private static Double calculateAvgStringLength(List<String> list) {
         List<Integer> newList = new ArrayList<>();
         for (String string : list) {
-            if (!string.contains(" ")
-                    && string.compareTo(string.toLowerCase()) == 0 ) {
+            if (!string.contains(" ") && string.compareTo(string.toLowerCase()) == 0) {
                 newList.add(E1.calculateStringLength(string));
             }
         }
@@ -42,18 +33,15 @@ public class E1 {
         list.stream()
                 .filter(s -> !s.contains(" "))
                 .filter(s -> s.compareTo(s.toLowerCase()) == 0)
-                .map(s -> s.replaceAll("\\.", "")
-                                   .replaceAll(",", ""))
+                .map(s -> s.replaceAll("\\.", "").replaceAll(",", ""))
                 .mapToInt(i -> i.length())
                 .average()
-                .ifPresentOrElse(r -> System.out.println(r),
-                        () -> System.out.println("Nie ma średniej"));
+                .ifPresentOrElse(
+                        r -> System.out.println(r), () -> System.out.println("Nie ma średniej"));
     }
 
     private static Integer calculateStringLength(String s) {
-        return s.replaceAll("\\.", "")
-                .replaceAll(",", "")
-                .length();
+        return s.replaceAll("\\.", "").replaceAll(",", "").length();
     }
 
     private static Double calculateAvg(List<Integer> list) {
