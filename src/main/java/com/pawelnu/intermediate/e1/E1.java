@@ -11,37 +11,38 @@ public class E1 {
      dots and commas.
     */
     public static void main(String[] args) {
-        List<String> list =
-                List.of("as", "As", "as as", "As as", "as.as", "As.as", "as,as", "As,as");
-
+        List<String> list = DataExample.getStringListWithAllCombinations();
         System.out.println(calculateAvgStringLength(list));
-        calculateAvgStringLengthStream(list);
+        System.out.println(calculateAvgStringLengthStream(list));
+
+        List<String> list2 = DataExample.getStringListWithEmptyString();
+        System.out.println(calculateAvgStringLength(list2));
+        System.out.println(calculateAvgStringLengthStream(list2));
     }
 
-    private static Double calculateAvgStringLength(List<String> list) {
+    public static Double calculateAvgStringLength(List<String> list) {
         List<Integer> newList = new ArrayList<>();
         for (String string : list) {
             if (!string.contains(" ") && string.compareTo(string.toLowerCase()) == 0) {
-                newList.add(E1.calculateStringLength(string));
+                newList.add(E1.replaceAllDotsAndCommas(string).length());
             }
         }
 
         return calculateAvg(newList);
     }
 
-    private static void calculateAvgStringLengthStream(List<String> list) {
-        list.stream()
+    public static Double calculateAvgStringLengthStream(List<String> list) {
+        return list.stream()
                 .filter(s -> !s.contains(" "))
                 .filter(s -> s.compareTo(s.toLowerCase()) == 0)
-                .map(s -> s.replaceAll("\\.", "").replaceAll(",", ""))
+                .map(s -> replaceAllDotsAndCommas(s))
                 .mapToInt(i -> i.length())
                 .average()
-                .ifPresentOrElse(
-                        r -> System.out.println(r), () -> System.out.println("Nie ma średniej"));
+                .orElse(0.0);
     }
 
-    private static Integer calculateStringLength(String s) {
-        return s.replaceAll("\\.", "").replaceAll(",", "").length();
+    private static String replaceAllDotsAndCommas(String s) {
+        return s.replaceAll("\\.", "").replaceAll(",", "");
     }
 
     private static Double calculateAvg(List<Integer> list) {
