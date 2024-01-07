@@ -35,14 +35,14 @@ public class E1 {
         return list.stream()
                 .filter(s -> !s.contains(" "))
                 .filter(s -> s.compareTo(s.toLowerCase()) == 0)
-                .map(s -> replaceAllDotsAndCommas(s))
-                .mapToInt(i -> i.length())
+                .map(E1::replaceAllDotsAndCommas)
+                .mapToInt(String::length)
                 .average()
                 .orElse(0.0);
     }
 
     private static String replaceAllDotsAndCommas(String s) {
-        return s.replaceAll("\\.", "").replaceAll(",", "");
+        return s.replaceAll("[.,]", "");
     }
 
     private static Double calculateAvg(List<Integer> list) {
