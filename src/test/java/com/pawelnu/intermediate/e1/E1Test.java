@@ -2,7 +2,7 @@ package com.pawelnu.intermediate.e1;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class E1Test {
     private static final Double avg = 3.3333333333333335;
