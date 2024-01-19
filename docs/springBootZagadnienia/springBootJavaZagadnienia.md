@@ -728,31 +728,291 @@ Programowanie aspektowe jest szczególnie przydatne w sytuacjach, gdzie pewne fu
 
 ### mapstruct
 
-TODO uzupełnić
+MapStruct to biblioteka generowania kodu w języku Java, która ułatwia implementację mapowań pomiędzy typami obiektów. Generuje kod mapowania w czasie kompilacji na podstawie adnotacji w kodzie, eliminując konieczność ręcznego pisania rutynowego kodu. MapStruct ma na celu ułatwienie procesu mapowania między obiektami, sprawiając, że jest łatwy, wydajny i bezpieczny typowo.
+
+Oto kilka kluczowych cech MapStruct:
+
+1. **Generowanie Kodu w Czasie Kompilacji:** MapStruct generuje wydajny kod mapowania w czasie kompilacji, co poprawia wydajność w porównaniu do rozwiązań opartych na refleksji w czasie wykonania.
+
+2. **Konfiguracja za pomocą Adnotacji:** Do definiowania mapowania między beanami używa się adnotacji, określając relacje między polami lub metodami.
+
+3. **Bezpieczne Pod względem Typów Mapowania:** MapStruct generuje bezpieczny pod względem typów kod mapowania, co zmniejsza ryzyko błędów w czasie wykonania związanych z niezgodnościami w właściwościach beanów.
+
+4. **Obsługa Konwerterów Niestandardowych:** MapStruct umożliwia definiowanie konwerterów niestandardowych dla określonych typów lub scenariuszy, co daje elastyczność w procesie mapowania.
+
+5. **Integracja z Środowiskiem Programistycznym:** MapStruct jest często dobrze zintegrowany z popularnymi środowiskami programistycznymi Java, oferując funkcje takie jak uzupełnianie kodu, nawigacja i sprawdzanie błędów.
+
+Poniżej znajduje się prosty przykład działania MapStruct:
+
+```java
+// Bean źródłowy
+public class Źródło {
+    private String imię;
+    private int wiek;
+    
+    // Gettery i settery
+}
+
+// Bean docelowy
+public class Cel {
+    private String pełneImię;
+    private int lata;
+    
+    // Gettery i settery
+}
+
+// Interfejs mapujący
+@Mapper
+public interface MójMapper {
+    MójMapper INSTANCJA = Mappers.getMapper(MójMapper.class);
+    
+    @Mapping(source = "imię", target = "pełneImię")
+    @Mapping(source = "wiek", target = "lata")
+    Cel mapujNaCel(Źródło źródło);
+}
+
+// Użycie
+Źródło źródło = new Źródło("Jan", 25);
+Cel cel = MójMapper.INSTANCJA.mapujNaCel(źródło);
+```
+
+W tym przykładzie MapStruct generuje kod mapowania na podstawie adnotacji w interfejsie `MójMapper`. Metoda `mapujNaCel` mapuje obiekt typu `Źródło` na obiekt typu `Cel`, zmieniając nazwy i konwertując właściwości zgodnie z określonymi regułami.
 
 ### czym jest Slf4j
 
-TODO uzupełnić
+SLF4J (Simple Logging Facade for Java) to prosty fasadowy interfejs do logowania w języku Java. Jest to narzędzie, które umożliwia programistom korzystanie z różnych systemów logowania, jednocześnie zapewniając jednolity interfejs dla aplikacji. SLF4J nie dostarcza implementacji samego logowania; zamiast tego pozwala na podłączanie różnych frameworków logowania (np. Logback, Log4j, Java Util Logging) i korzystanie z nich w spójny sposób.
+
+Oto kilka kluczowych cech SLF4J:
+
+1. **Fasadowy Interfejs:** SLF4J dostarcza prosty interfejs (fasadę), który pozwala programistom korzystać z różnych frameworków logowania, niezależnie od tego, który jest dostępny w danym środowisku.
+
+2. **Zapewnia Jednolity Interfejs:** Dzięki SLF4J, kod aplikacji korzystający z logowania nie jest bezpośrednio zależny od konkretnego frameworku logowania. Programista może zmienić implementację logowania bez zmiany kodu aplikacji.
+
+3. **Wsparcie dla Parametryzowanych Komunikatów:** SLF4J oferuje wsparcie dla parametryzowanych komunikatów logowania, co pozwala na efektywne zarządzanie konstrukcją komunikatów w celu zwiększenia wydajności.
+
+4. **Dostosowywalność:** Programista może dostosować implementację logowania, wybierając odpowiednią implementację fasady i backendu logowania w zależności od potrzeb.
+
+Przykład użycia SLF4J w kodzie Java może wyglądać tak:
+
+```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class MojaKlasa {
+    private static final Logger logger = LoggerFactory.getLogger(MojaKlasa.class);
+
+    public void metoda() {
+        // Przykład logowania
+        logger.debug("To jest wiadomość debug");
+        logger.info("To jest wiadomość informacyjna");
+        logger.error("To jest wiadomość błędu");
+    }
+}
+```
+
+W powyższym przykładzie `LoggerFactory.getLogger(MojaKlasa.class)` uzyskuje instancję loggera dla danej klasy, a następnie można korzystać z różnych poziomów logowania, takich jak `debug`, `info` i `error`. Implementację logowania można dostosować, dodając odpowiednią zależność, na przykład Logback czy Log4j.
 
 ### czym jest DTO i po co sie stosuje
 
-TODO uzupełnić
+DTO, czyli Data Transfer Object, to wzorzec projektowy wykorzystywany w programowaniu, szczególnie w kontekście aplikacji wielowarstwowych, aby efektywnie przesyłać dane między różnymi komponentami systemu. DTO to obiekt, który służy jedynie do przenoszenia danych między warstwami, a nie zawiera logiki biznesowej.
+
+Główne cele stosowania DTO to:
+
+1. **Zmniejszenie ilości przesyłanych danych:** DTO pozwala na przesyłanie tylko tych informacji, które są niezbędne, eliminując konieczność przesyłania całych obiektów z warstwy do warstwy.
+
+2. **Separacja Interfejsu od Implementacji:** Warstwy aplikacji często komunikują się ze sobą poprzez interfejsy. DTO pomaga oddzielić te interfejsy od implementacji, umożliwiając łatwe wprowadzanie zmian w jednej warstwie bez konieczności modyfikacji drugiej.
+
+3. **Ułatwienie Zgodności między Interfejsami:** W przypadku aplikacji, które korzystają z różnych technologii lub są rozproszone, stosowanie DTO ułatwia zgodność interfejsów, ponieważ definiuje jednolity sposób przesyłania danych.
+
+4. **Optymalizacja Wydajności:** Przesyłanie tylko niezbędnych danych może zredukować ilość ruchu sieciowego i poprawić wydajność aplikacji, zwłaszcza w przypadku komunikacji między klientem a serwerem.
+
+Przykład prostego DTO w języku Java może wyglądać tak:
+
+```java
+public class UserDTO {
+    private String username;
+    private String email;
+
+    // Konstruktory, gettery, settery
+}
+```
+
+Załóżmy, że mamy klasę użytkownika w warstwie biznesowej:
+
+```java
+public class User {
+    private String username;
+    private String password;
+    private String email;
+
+    // Konstruktory, gettery, settery
+}
+```
+
+Gdy przekazujemy dane użytkownika z warstwy biznesowej do warstwy prezentacji, moglibyśmy użyć obiektu UserDTO, aby przesłać tylko te informacje, które są potrzebne w warstwie prezentacji (na przykład, aby ukryć hasło).
+
+W skrócie, DTO jest używane do efektywnego przesyłania danych pomiędzy warstwami aplikacji, pomagając w zwiększeniu elastyczności, separacji i wydajności systemu.
 
 ### czym jest ResponseEntity
 
-TODO uzupełnić
+`ResponseEntity` to klasa w frameworku Spring, używana do reprezentowania pełnej odpowiedzi HTTP, zawierającej zarówno ciało odpowiedzi, nagłówki, jak i kod stanu HTTP. Jest często stosowana w obszarze budowania aplikacji webowych, szczególnie w przypadku RESTful API, gdzie pełna kontrola nad odpowiedzią HTTP jest istotna.
+
+Oto kilka kluczowych cech i zastosowań klasy `ResponseEntity` w Spring:
+
+1. **Zawartość Odpowiedzi:**
+   - `ResponseEntity` umożliwia ustawienie ciała odpowiedzi. Może to być dowolny obiekt reprezentujący dane, które mają być przesłane jako odpowiedź.
+
+   ```java
+   ResponseEntity<String> responseEntity = new ResponseEntity<>("Treść odpowiedzi", HttpStatus.OK);
+   ```
+
+2. **Kod Stanu HTTP:**
+   - Pozwala na ustawienie kodu stanu HTTP, który zostanie przekazany w odpowiedzi. Na przykład, `HttpStatus.OK` oznacza sukces, `HttpStatus.NOT_FOUND` oznacza, że zasób nie został znaleziony, itp.
+
+   ```java
+   ResponseEntity<String> responseEntity = new ResponseEntity<>("Not Found", HttpStatus.NOT_FOUND);
+   ```
+
+3. **Nagłówki HTTP:**
+   - Można również dostosować nagłówki HTTP, dodając je do `ResponseEntity`. Na przykład, możesz ustawić nagłówek typu zawartości, nagłówek niestandardowy itp.
+
+   ```java
+   HttpHeaders headers = new HttpHeaders();
+   headers.add("Custom-Header", "Wartość niestandardowego nagłówka");
+   ResponseEntity<String> responseEntity = new ResponseEntity<>("Treść odpowiedzi", headers, HttpStatus.OK);
+   ```
+
+4. **Obsługa Błędów:**
+   - `ResponseEntity` jest również używane do obsługi błędów. Na przykład, w przypadku wyjątków, można zwrócić `ResponseEntity` z odpowiednim kodem stanu HTTP i informacją o błędzie.
+
+   ```java
+   ResponseEntity<String> responseEntity = new ResponseEntity<>("Błąd: Zasób nieznaleziony", HttpStatus.NOT_FOUND);
+   ```
+
+5. **Generyczność:**
+   - `ResponseEntity` jest generyczna, co oznacza, że możesz określić typ danych, który jest przesyłany w odpowiedzi. Na przykład, `ResponseEntity<String>` oznacza, że ciało odpowiedzi to ciąg znaków.
+
+   ```java
+   ResponseEntity<List<String>> responseEntity = new ResponseEntity<>(listaStringow, HttpStatus.OK);
+   ```
+
+`ResponseEntity` jest często używane w kontrolerach Spring MVC do zwracania odpowiedzi HTTP. Przykładowe zastosowanie w kontrolerze może wyglądać tak:
+
+```java
+@RestController
+public class MyController {
+
+    @GetMapping("/example")
+    public ResponseEntity<String> getExample() {
+        String responseBody = "Przykładowa odpowiedź";
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Custom-Header", "Wartość niestandardowego nagłówka");
+        return new ResponseEntity<>(responseBody, headers, HttpStatus.OK);
+    }
+}
+```
+
+W tym przypadku, metoda `getExample` zwraca `ResponseEntity` z treścią odpowiedzi, nagłówkami i kodem stanu HTTP.
 
 ### w jakim celu przydatna jest baza elasticsearch
 
-TODO uzupełnić
+Elasticsearch to silnik wyszukiwania i analizy tekstu, który jest często wykorzystywany do przetwarzania i analizy danych tekstowych w czasie rzeczywistym. Poniżej przedstawiam kilka zastosowań i korzyści z korzystania z Elasticsearch:
+
+1. **Wyszukiwanie Pełnotekstowe:**
+   - Elasticsearch jest znany ze swojej skutecznej funkcji wyszukiwania pełnotekstowego. Jest ono przydatne w sytuacjach, gdy chcemy przeszukać duże zbiory danych tekstowych w poszukiwaniu dopasowań do określonych słów kluczowych.
+
+2. **Analiza i Agregacja Danych:**
+   - Elasticsearch oferuje zaawansowane możliwości analizy i agregacji danych. Możemy przetwarzać, grupować i analizować dane tekstowe, a także tworzyć różnego rodzaju statystyki i raporty.
+
+3. **Wyszukiwanie Geo-Spatialne:**
+   - Elasticsearch obsługuje również funkcje wyszukiwania oparte na danych przestrzennych, co jest przydatne w przypadku, gdy mamy dane geograficzne i chcemy przeszukiwać je na podstawie lokalizacji.
+
+4. **Monitorowanie i Logowanie:**
+   - Elasticsearch jest często używany w celu zbierania, przetwarzania i analizy logów aplikacji. W połączeniu z Kibana (narzędziem do wizualizacji danych), umożliwia skuteczne monitorowanie aplikacji, debugowanie i analizę problemów.
+
+5. **Indeksacja i Przetwarzanie Dużych Wolumenów Danych:**
+   - Elasticsearch jest zoptymalizowany do obsługi dużych wolumenów danych. Jest wydajny w indeksowaniu i przetwarzaniu danych w czasie rzeczywistym, co jest korzystne w przypadku aplikacji, które generują duże ilości danych na przykład w czasie rzeczywistym.
+
+6. **Autocomplete i Sugestie:**
+   - Elasticsearch może być używany do implementacji funkcji automatycznego uzupełniania i sugestii w wyszukiwarkach lub innych interfejsach użytkownika. To przydatne w celu zapewnienia szybkiego i skutecznego interfejsu wyszukiwania.
+
+7. **Rozproszone Przetwarzanie:**
+   - Elasticsearch został zaprojektowany z myślą o skalowalności i rozproszeniu. Może obsługiwać instalacje o dużej skali, co sprawia, że jest przydatny w środowiskach, gdzie wymagane jest rozproszone przetwarzanie danych.
+
+8. **Integracja z Inne Narzędzia Elastic Stack:**
+   - Elasticsearch jest często używany w połączeniu z innymi narzędziami z rodziny Elastic Stack, takimi jak Logstash (do przetwarzania logów) i Kibana (do wizualizacji danych), aby stworzyć kompleksowe rozwiązanie do analizy i monitorowania danych.
+
+Podsumowując, Elasticsearch jest używany w sytuacjach, gdzie istnieje potrzeba zaawansowanego przeszukiwania, analizy i monitorowania danych tekstowych oraz wolumenów logów. Jest popularny w dziedzinach takich jak analiza danych, monitorowanie aplikacji, wyszukiwanie internetowe, systemy rekomendacyjne i wiele innych.
 
 ### czym jest multitenancy
 
-TODO uzupełnić
+Multitenancy (wielotenantowość) to architektoniczny model, w którym jedna instancja aplikacji lub systemu obsługuje jednocześnie wiele niezależnych użytkowników lub klientów, zwanych "tenantami". Każdy tenant ma dostęp do wspólnej instancji aplikacji, ale dane, konfiguracje i zasoby są izolowane od siebie, co pozwala na współdzielenie jednej aplikacji między wieloma klientami.
+
+W multitenancy każdy tenant traktowany jest jak odrębny "lokator" w systemie, posiadający swoje własne zasoby, dane i ustawienia. Dzięki temu różne organizacje lub klienci mogą korzystać z jednej instancji aplikacji, a jednocześnie utrzymywać separację swoich danych oraz konfiguracji.
+
+Istnieją różne formy multitenancy, w tym:
+
+1. **Baza Danych Wielotenantowa:**
+   - Każdy tenant ma swoją oddzielną bazę danych, co pozwala na pełną izolację danych między różnymi klientami.
+
+2. **Wielotenantowość na Poziomie Wierszy (Row-Level Multitenancy):**
+   - Dane dla różnych tenantów są przechowywane w tym samym zbiorze tabel, ale każdy wiersz w bazie danych zawiera identyfikator tenantów, co pozwala na ich rozróżnienie.
+
+3. **Wielotenantowość na Poziomie Kolumn (Column-Level Multitenancy):**
+   - W tym modelu, dane dla różnych tenantów są przechowywane w tych samych tabelach, ale każda kolumna zawiera dane jednego konkretnego tenantu.
+
+4. **Wielotenantowość na Poziomie Schematu (Schema-Level Multitenancy):**
+   - W systemach baz danych, które obsługują schematy, każdy tenant ma swój unikalny schemat, co pozwala na izolację danych.
+
+Multitenancy jest często stosowany w chmurach obliczeniowych (cloud computing), aplikacjach biznesowych i systemach dostarczanych jako usługa (SaaS). Korzyści z multitenancy obejmują:
+
+- **Optymalizacja Zasobów:** Jedna instancja aplikacji może obsługiwać wielu klientów, co pozwala na lepsze wykorzystanie zasobów.
+
+- **Łatwiejsze Wdrożenia i Utrzymanie:** Aktualizacje i utrzymanie są łatwiejsze, ponieważ dotyczą jednej instancji, a nie wielu niezależnych instalacji.
+
+- **Skalowalność:** Możliwość elastycznego dostosowywania zasobów w zależności od potrzeb różnych klientów.
+
+- **Ekonomiczność:** Dzięki współdzieleniu zasobów koszty infrastruktury mogą być niższe.
+
+Jednak multitenancy wiąże się również z wyzwaniami, takimi jak bezpieczeństwo (zapewnienie izolacji danych między tenantami), skalowalność, oraz konieczność obsługi różnorodnych wymagań i konfiguracji dla różnych klientów.
 
 ### adnotacja @ConditionalOnProperty
 
-TODO uzupełnić
+`@ConditionalOnProperty` to adnotacja w ekosystemie Spring Boot, która jest używana do warunkowego konfigurowania komponentów na podstawie istnienia lub wartości właściwości (property) w pliku konfiguracyjnym. Pozwala ona na elastyczne dostosowywanie konfiguracji aplikacji w zależności od ustawień środowiskowych lub preferencji użytkownika.
+
+Przykład użycia adnotacji `@ConditionalOnProperty`:
+
+```java
+@Configuration
+@ConditionalOnProperty(name = "myapp.feature.enabled", havingValue = "true")
+public class MyFeatureConfig {
+    // Konfiguracja dla funkcji, gdy właściwość "myapp.feature.enabled" ma wartość "true"
+}
+```
+
+W tym przykładzie, `MyFeatureConfig` zostanie skonfigurowane tylko wtedy, gdy właściwość o nazwie "myapp.feature.enabled" istnieje i ma wartość "true". Jeśli właściwość nie istnieje lub ma inną wartość, konfiguracja tego komponentu nie będzie aktywowana.
+
+Najważniejsze elementy adnotacji `@ConditionalOnProperty` to:
+
+- **name:** Określa nazwę właściwości, której wartość ma być sprawdzana. Na przykład, "myapp.feature.enabled".
+
+- **havingValue:** Określa oczekiwaną wartość właściwości. Jeśli ta wartość jest zdefiniowana, to konfiguracja będzie aktywowana tylko wtedy, gdy właściwość ma tę dokładną wartość.
+
+- **matchIfMissing:** Domyślnie ustawione na `true`. Jeśli właściwość nie jest zdefiniowana, a `matchIfMissing` jest ustawione na `true`, to konfiguracja również będzie aktywowana.
+
+- **prefix:** Prefix dla właściwości. Umożliwia skrócenie wielu warunków za pomocą tego samego prefixu.
+
+Przykład z użyciem prefixu:
+
+```java
+@Configuration
+@ConditionalOnProperty(prefix = "myapp.feature", name = "enabled", havingValue = "true")
+public class MyFeatureConfig {
+    // Konfiguracja dla funkcji, gdy właściwość "myapp.feature.enabled" ma wartość "true"
+}
+```
+
+W tym przypadku, konfiguracja będzie aktywowana, jeśli właściwość o nazwie "myapp.feature.enabled" istnieje i ma wartość "true". Ta funkcja jest przydatna w sytuacjach, gdzie chcemy zgrupować warunki dla różnych właściwości pod jednym prefixem.
 
 ## Hibernate
 
