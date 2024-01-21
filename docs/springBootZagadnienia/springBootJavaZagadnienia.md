@@ -1,75 +1,77 @@
 # springBootJavaZagadnienia
 
--   [springBootJavaZagadnienia](#springbootjavazagadnienia)
-    -   [Java](#java)
-        -   [czym jest java streams (najważniejsze to znać .filter() .map() .findFirst() .toList())](#czym-jest-java-streams-najważniejsze-to-znać-filter-map-findfirst-tolist)
-        -   [przetwarzanie sekwencyjne i równoległe](#przetwarzanie-sekwencyjne-i-równoległe)
-        -   [czym jest pojo](#czym-jest-pojo)
-        -   [czym są typy generyczne w java (malo ich używamy)](#czym-są-typy-generyczne-w-java-malo-ich-używamy)
-        -   [czym jest clean code, zasady kiss, yagni, dry](#czym-jest-clean-code-zasady-kiss-yagni-dry)
-        -   [czym jest java optional](#czym-jest-java-optional)
-        -   [NullPointerException](#nullpointerexception)
-        -   [czym jest ternary operator w java](#czym-jest-ternary-operator-w-java)
-    -   [Spring](#spring)
-        -   [adnotacja Autowired co to](#adnotacja-autowired-co-to)
-        -   [adnotacja ComponentScan co to](#adnotacja-componentscan-co-to)
-        -   [adnotacja Bean co to](#adnotacja-bean-co-to)
-        -   [profile w spring (np development, production)](#profile-w-spring-np-development-production)
-        -   [feign client co to](#feign-client-co-to)
-        -   [adnotacja EntityScan co to](#adnotacja-entityscan-co-to)
-        -   [czym jest programowanie aspektowe i jeden przykład wykorzystania](#czym-jest-programowanie-aspektowe-i-jeden-przykład-wykorzystania)
-        -   [mapstruct](#mapstruct)
-        -   [czym jest Slf4j](#czym-jest-slf4j)
-        -   [czym jest DTO i po co sie stosuje](#czym-jest-dto-i-po-co-sie-stosuje)
-        -   [czym jest ResponseEntity](#czym-jest-responseentity)
-        -   [w jakim celu przydatna jest baza elasticsearch](#w-jakim-celu-przydatna-jest-baza-elasticsearch)
-        -   [czym jest multitenancy](#czym-jest-multitenancy)
-        -   [adnotacja @ConditionalOnProperty](#adnotacja-conditionalonproperty)
-    -   [Hibernate](#hibernate)
-        -   [czym jest method query, HQL](#czym-jest-method-query-hql)
-        -   [adnotacja @EntityGraph - tylko do czego jest](#adnotacja-entitygraph---tylko-do-czego-jest)
-        -   [problem bazodanowy N+1 czym on jest](#problem-bazodanowy-n1-czym-on-jest)
-        -   [specyfikacja JPA czym jest](#specyfikacja-jpa-czym-jest)
-        -   [podstawowe adnotacje hibernate z relacjami OneToMany itp, czym jest fetchType oraz cascadeType, orphanRemoval](#podstawowe-adnotacje-hibernate-z-relacjami-onetomany-itp-czym-jest-fetchtype-oraz-cascadetype-orphanremoval)
-        -   [baza H2 co to](#baza-h2-co-to)
-        -   [czym jest adnotacja @Transactional](#czym-jest-adnotacja-transactional)
-    -   [Bazy danych:](#bazy-danych)
-        -   [powtórzyć podstawowe pojęcia bazodanowe (tabela, rekord, rodzaje relacji, indeks, klucz podst. obcy, constrainty)](#powtórzyć-podstawowe-pojęcia-bazodanowe-tabela-rekord-rodzaje-relacji-indeks-klucz-podst-obcy-constrainty)
-        -   [Liquibase czym jest](#liquibase-czym-jest)
-    -   [GIT](#git)
-        -   [podstawowe pojęcia, branch, merge commit push pull](#podstawowe-pojęcia-branch-merge-commit-push-pull)
-        -   [czym jest gitflow](#czym-jest-gitflow)
-        -   [czym jest release oraz release candidate](#czym-jest-release-oraz-release-candidate)
-    -   [Testy:](#testy)
-        -   [co to jest test jednostkowy, asercje](#co-to-jest-test-jednostkowy-asercje)
-        -   [co to jest mockito, co to given when then, czym jest mock, czym jest metoda verify w mockito](#co-to-jest-mockito-co-to-given-when-then-czym-jest-mock-czym-jest-metoda-verify-w-mockito)
-        -   [czym są testy kontraktowe](#czym-są-testy-kontraktowe)
-        -   [na czym polega TDD](#na-czym-polega-tdd)
-    -   [Maven:](#maven)
-        -   [w maven czym są sekcje dependency,build,plugin, scope provided](#w-maven-czym-są-sekcje-dependencybuildplugin-scope-provided)
-        -   [czym są komendy maven: clean compile install](#czym-są-komendy-maven-clean-compile-install)
-    -   [Bezpieczeństwo:](#bezpieczeństwo)
-        -   [czym jest Keycloak (co to jest realm, uprawnienia)](#czym-jest-keycloak-co-to-jest-realm-uprawnienia)
-        -   [czym jest token JWT](#czym-jest-token-jwt)
-    -   [Architektura](#architektura)
-        -   [czym jest CQRS (dodatkowo czym jest readmodel)](#czym-jest-cqrs-dodatkowo-czym-jest-readmodel)
-        -   [czym są mikroserwisy (oraz podstawowe pojęcia: api gateway, load balancer, circuit breaker)](#czym-są-mikroserwisy-oraz-podstawowe-pojęcia-api-gateway-load-balancer-circuit-breaker)
-        -   [czym jest replikacja w mikroserwisach i kafka (co to jest topic w kafka)](#czym-jest-replikacja-w-mikroserwisach-i-kafka-co-to-jest-topic-w-kafka)
-        -   [czym jest wzorzec backend for frontend](#czym-jest-wzorzec-backend-for-frontend)
-    -   [Inne:](#inne)
-        -   [czym jest lombok i podstawowe adnotacje](#czym-jest-lombok-i-podstawowe-adnotacje)
-        -   [kody http 200,201,204,400,401,403,409,422](#kody-http-200201204400401403409422)
-        -   [czym jest specyfikacja OpenAPI](#czym-jest-specyfikacja-openapi)
-        -   [zasady restful api - podstawowe](#zasady-restful-api---podstawowe)
-        -   [czym jest amazon S3](#czym-jest-amazon-s3)
-        -   [czym jest CI/CD](#czym-jest-cicd)
-        -   [kim jest osoba - DevOps](#kim-jest-osoba---devops)
-        -   [na czym polega scrum, daily, review, retro, planning](#na-czym-polega-scrum-daily-review-retro-planning)
-        -   [czym jest owasp - tylko wiedzieć](#czym-jest-owasp---tylko-wiedzieć)
-        -   [domain driven design - definicja](#domain-driven-design---definicja)
-        -   [do czego używa sie postman](#do-czego-używa-sie-postman)
-        -   [czym jest docker, dockerfile, docker compose](#czym-jest-docker-dockerfile-docker-compose)
-        -   [sama definicja czym jest kubernetes (co to jest pod), kibana, grafana](#sama-definicja-czym-jest-kubernetes-co-to-jest-pod-kibana-grafana)
+- [springBootJavaZagadnienia](#springbootjavazagadnienia)
+  - [Java](#java)
+    - [czym jest java streams (najważniejsze to znać .filter() .map() .findFirst() .toList())](#czym-jest-java-streams-najważniejsze-to-znać-filter-map-findfirst-tolist)
+    - [przetwarzanie sekwencyjne i równoległe](#przetwarzanie-sekwencyjne-i-równoległe)
+    - [czym jest pojo](#czym-jest-pojo)
+    - [czym są typy generyczne w java (malo ich używamy)](#czym-są-typy-generyczne-w-java-malo-ich-używamy)
+    - [czym jest clean code, zasady kiss, yagni, dry](#czym-jest-clean-code-zasady-kiss-yagni-dry)
+    - [czym jest java optional](#czym-jest-java-optional)
+    - [NullPointerException](#nullpointerexception)
+    - [czym jest ternary operator w java](#czym-jest-ternary-operator-w-java)
+  - [Spring](#spring)
+    - [adnotacja Autowired co to](#adnotacja-autowired-co-to)
+    - [adnotacja ComponentScan co to](#adnotacja-componentscan-co-to)
+    - [adnotacja Bean co to](#adnotacja-bean-co-to)
+    - [profile w spring (np development, production)](#profile-w-spring-np-development-production)
+    - [feign client co to](#feign-client-co-to)
+    - [adnotacja EntityScan co to](#adnotacja-entityscan-co-to)
+    - [czym jest programowanie aspektowe i jeden przykład wykorzystania](#czym-jest-programowanie-aspektowe-i-jeden-przykład-wykorzystania)
+    - [mapstruct](#mapstruct)
+    - [czym jest Slf4j](#czym-jest-slf4j)
+    - [czym jest DTO i po co sie stosuje](#czym-jest-dto-i-po-co-sie-stosuje)
+    - [czym jest ResponseEntity](#czym-jest-responseentity)
+    - [w jakim celu przydatna jest baza elasticsearch](#w-jakim-celu-przydatna-jest-baza-elasticsearch)
+    - [czym jest multitenancy](#czym-jest-multitenancy)
+    - [adnotacja @ConditionalOnProperty](#adnotacja-conditionalonproperty)
+  - [Hibernate](#hibernate)
+    - [czym jest method query, HQL](#czym-jest-method-query-hql)
+    - [adnotacja @EntityGraph - tylko do czego jest](#adnotacja-entitygraph---tylko-do-czego-jest)
+    - [problem bazodanowy N+1 czym on jest](#problem-bazodanowy-n1-czym-on-jest)
+    - [specyfikacja JPA czym jest](#specyfikacja-jpa-czym-jest)
+    - [podstawowe adnotacje hibernate z relacjami OneToMany](#podstawowe-adnotacje-hibernate-z-relacjami-onetomany)
+    - [czym jest fetchType](#czym-jest-fetchtype)
+    - [czym jest orphanRemoval](#czym-jest-orphanremoval)
+    - [baza H2 co to](#baza-h2-co-to)
+    - [czym jest adnotacja @Transactional](#czym-jest-adnotacja-transactional)
+  - [Bazy danych:](#bazy-danych)
+    - [powtórzyć podstawowe pojęcia bazodanowe (tabela, rekord, rodzaje relacji, indeks, klucz podst. obcy, constrainty)](#powtórzyć-podstawowe-pojęcia-bazodanowe-tabela-rekord-rodzaje-relacji-indeks-klucz-podst-obcy-constrainty)
+    - [Liquibase czym jest](#liquibase-czym-jest)
+  - [GIT](#git)
+    - [podstawowe pojęcia, branch, merge commit push pull](#podstawowe-pojęcia-branch-merge-commit-push-pull)
+    - [czym jest gitflow](#czym-jest-gitflow)
+    - [czym jest release oraz release candidate](#czym-jest-release-oraz-release-candidate)
+  - [Testy:](#testy)
+    - [co to jest test jednostkowy, asercje](#co-to-jest-test-jednostkowy-asercje)
+    - [co to jest mockito, co to given when then, czym jest mock, czym jest metoda verify w mockito](#co-to-jest-mockito-co-to-given-when-then-czym-jest-mock-czym-jest-metoda-verify-w-mockito)
+    - [czym są testy kontraktowe](#czym-są-testy-kontraktowe)
+    - [na czym polega TDD](#na-czym-polega-tdd)
+  - [Maven:](#maven)
+    - [w maven czym są sekcje dependency,build,plugin, scope provided](#w-maven-czym-są-sekcje-dependencybuildplugin-scope-provided)
+    - [czym są komendy maven: clean compile install](#czym-są-komendy-maven-clean-compile-install)
+  - [Bezpieczeństwo:](#bezpieczeństwo)
+    - [czym jest Keycloak (co to jest realm, uprawnienia)](#czym-jest-keycloak-co-to-jest-realm-uprawnienia)
+    - [czym jest token JWT](#czym-jest-token-jwt)
+  - [Architektura](#architektura)
+    - [czym jest CQRS (dodatkowo czym jest readmodel)](#czym-jest-cqrs-dodatkowo-czym-jest-readmodel)
+    - [czym są mikroserwisy (oraz podstawowe pojęcia: api gateway, load balancer, circuit breaker)](#czym-są-mikroserwisy-oraz-podstawowe-pojęcia-api-gateway-load-balancer-circuit-breaker)
+    - [czym jest replikacja w mikroserwisach i kafka (co to jest topic w kafka)](#czym-jest-replikacja-w-mikroserwisach-i-kafka-co-to-jest-topic-w-kafka)
+    - [czym jest wzorzec backend for frontend](#czym-jest-wzorzec-backend-for-frontend)
+  - [Inne:](#inne)
+    - [czym jest lombok i podstawowe adnotacje](#czym-jest-lombok-i-podstawowe-adnotacje)
+    - [kody http 200,201,204,400,401,403,409,422](#kody-http-200201204400401403409422)
+    - [czym jest specyfikacja OpenAPI](#czym-jest-specyfikacja-openapi)
+    - [zasady restful api - podstawowe](#zasady-restful-api---podstawowe)
+    - [czym jest amazon S3](#czym-jest-amazon-s3)
+    - [czym jest CI/CD](#czym-jest-cicd)
+    - [kim jest osoba - DevOps](#kim-jest-osoba---devops)
+    - [na czym polega scrum, daily, review, retro, planning](#na-czym-polega-scrum-daily-review-retro-planning)
+    - [czym jest owasp - tylko wiedzieć](#czym-jest-owasp---tylko-wiedzieć)
+    - [domain driven design - definicja](#domain-driven-design---definicja)
+    - [do czego używa sie postman](#do-czego-używa-sie-postman)
+    - [czym jest docker, dockerfile, docker compose](#czym-jest-docker-dockerfile-docker-compose)
+    - [sama definicja czym jest kubernetes (co to jest pod), kibana, grafana](#sama-definicja-czym-jest-kubernetes-co-to-jest-pod-kibana-grafana)
 
 ## Java
 
@@ -1033,31 +1035,432 @@ W tym przypadku, konfiguracja będzie aktywowana, jeśli właściwość o nazwie
 
 ### czym jest method query, HQL
 
-TODO uzupełnić
+Jeśli chodzi o Hibernate w kontekście Spring Boot, to często używane są zapytania HQL (Hibernate Query Language) oraz metody zapytań (query methods). Hibernate jest popularnym narzędziem do mapowania obiektowo-relacyjnego w aplikacjach Java, a Spring Boot ułatwia integrację z Hibernate.
+
+1. **HQL (Hibernate Query Language):**
+   HQL to język zapytań używany w Hibernate, który operuje na klasach i obiektach, a nie na tabelach i kolumnach, tak jak to robi SQL. Przykładowe zapytanie HQL wyglądałoby tak:
+
+    ```java
+    String hqlQuery = "SELECT e FROM YourEntity e WHERE e.someProperty = :propertyValue";
+    Query query = session.createQuery(hqlQuery);
+    query.setParameter("propertyValue", someValue);
+    List<YourEntity> result = query.list();
+    ```
+
+    W tym przypadku "YourEntity" to nazwa Twojej encji, a "someProperty" to nazwa właściwości w tej encji.
+
+2. **Metody zapytań (Query Methods):**
+   W Spring Data można również definiować metody zapytań bezpośrednio w interfejsach repozytoriów. Spring Data używa mechanizmu nazewnictwa metod do generowania zapytań na podstawie nazw metod. Na przykład:
+
+    ```java
+    public interface YourEntityRepository extends JpaRepository<YourEntity, Long> {
+        List<YourEntity> findBySomeProperty(String propertyValue);
+    }
+    ```
+
+    W tym przypadku Spring Data automatycznie generuje zapytanie na podstawie nazwy metody (`findBySomeProperty`). Nie musisz pisać zapytań HQL, a Spring Data zajmuje się generowaniem odpowiedniego zapytania SQL na podstawie nazwy metody.
+
+Kombinowanie Hibernate HQL i Spring Data metody zapytań daje elastyczność w obszarze dostępu do bazy danych w aplikacjach opartych na Java Spring Boot.
 
 ### adnotacja @EntityGraph - tylko do czego jest
 
-TODO uzupełnić
+Adnotacja `@EntityGraph` w Spring Data JPA służy do określania strategii ładowania powiązanych encji (ang. entity graphs). Jest to narzędzie pozwalające na zoptymalizowanie ładowania danych z bazy danych poprzez określenie, które powiązane encje powinny być wczytywane w trakcie pobierania danej encji.
+
+Główne zastosowania `@EntityGraph` to:
+
+1. **Ładowanie Leniwe (Lazy Loading):** Domyślnie, relacje w encjach mogą być ustawione na ładowanie leniwe (lazy loading), co oznacza, że dane związane z daną relacją nie są wczytywane od razu, ale dopiero w momencie, gdy są faktycznie potrzebne. `@EntityGraph` może zostać użyte, aby zadecydować, które relacje powinny zostać wczytane od razu, a które powinny być ładowane leniwe.
+
+2. **Zoptymalizowane Ładowanie Powiązań (Fetch Graph):** Można użyć `@EntityGraph` do określenia, które powiązane encje powinny być wczytywane w jednym zapytaniu SQL (zamiast oddzielnych zapytań dla każdej encji). To może zredukować ilość zapytań do bazy danych, co jest istotne dla optymalizacji wydajności.
+
+Przykład użycia `@EntityGraph` może wyglądać tak:
+
+```java
+@Entity
+public class Author {
+    // ...
+
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    @EntityGraph(attributePaths = "books")
+    private List<Book> books;
+
+    // ...
+}
+```
+
+W tym przypadku, zastosowanie `@EntityGraph` z atrybutem `attributePaths` pozwala określić, że w momencie, gdy `Author` zostanie pobrane, relacja `books` powinna zostać natychmiast wczytana (nawet jeśli jest ustawiona na leniwe ładowanie).
+
+Ogólnie rzecz biorąc, `@EntityGraph` jest narzędziem do finezyjnej kontroli ładowania danych w aplikacji opartej na Spring Data JPA.
 
 ### problem bazodanowy N+1 czym on jest
 
-TODO uzupełnić
+Problem N+1 w kontekście baz danych występuje, gdy w trakcie pobierania danych z bazy danych jednocześnie pobierane są dane związane, ale w odseparowanych zapytaniach. To może prowadzić do nadmiernego obciążenia bazy danych i spadku wydajności aplikacji.
+
+Problem N+1 można opisać w następujący sposób:
+
+- N reprezentuje liczbę głównych obiektów (encji), które są pobierane z bazy danych.
+- +1 reprezentuje dodatkowe zapytanie dla każdego z tych obiektów w celu pobrania powiązanych obiektów (relacji).
+
+Na przykład, załóżmy, że masz listę autorów, a dla każdego autora chcesz pobrać jego książki. Jeśli użyjesz leniwego ładowania (lazy loading) dla relacji między autorem a książkami, każde zapytanie do bazy danych może być osobnym zapytaniem o książki autora, co prowadzi do N+1 zapytań. 
+
+Przykład w Hibernate z leniwym ładowaniem:
+
+```java
+List<Author> authors = session.createQuery("FROM Author", Author.class).list();
+
+// Dla każdego autora zostanie wykonane osobne zapytanie, aby pobrać jego książki
+for (Author author : authors) {
+    List<Book> books = author.getBooks(); // N+1 queries
+}
+```
+
+Aby rozwiązać problem N+1, można zastosować różne techniki, takie jak:
+
+1. **Eager Loading:** Można zmienić strategię ładowania na "eager loading" dla danej relacji, co oznacza, że dane związane będą ładowane natychmiastowo razem z głównym zapytaniem.
+
+   ```java
+   @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+   private List<Book> books;
+   ```
+
+2. **JOIN Fetching:** Można użyć operacji JOIN w zapytaniu SQL, aby złączyć dane główne z danymi powiązanymi w jednym zapytaniu.
+
+   ```sql
+   SELECT a FROM Author a JOIN FETCH a.books
+   ```
+
+3. **Batch Fetching:** Można skorzystać z opcji batch fetching, aby zoptymalizować pobieranie danych.
+
+   ```java
+   @OneToMany(mappedBy = "author")
+   @BatchSize(size = 10) // Określenie rozmiaru paczki
+   private List<Book> books;
+   ```
+
+Dobieranie odpowiedniej strategii zależy od konkretnego przypadku i wymagań aplikacji, aby zminimalizować ilość zbędnych zapytań i poprawić wydajność systemu.
 
 ### specyfikacja JPA czym jest
 
-TODO uzupełnić
+Specyfikacja JPA (Java Persistence API) jest standardem programistycznym definiującym interfejsy programistyczne dla zarządzania danymi obiektowymi w aplikacjach Java EE (Enterprise Edition). JPA umożliwia programistom korzystanie z konceptów ORM (Object-Relational Mapping), co ułatwia mapowanie danych między relacyjnymi bazami danych a obiektowymi strukturami danych w języku Java.
 
-### podstawowe adnotacje hibernate z relacjami OneToMany itp, czym jest fetchType oraz cascadeType, orphanRemoval
+Główne cele specyfikacji JPA to:
 
-TODO uzupełnić
+1. **Ułatwienie Mapowania Obiektowo-Relacyjnego (ORM):** JPA definiuje sposób mapowania klas i relacji pomiędzy obiektami a strukturami tabel w bazie danych. Programista nie musi pisać zapytań SQL, aby pobierać lub zapisywać dane; zamiast tego korzysta z obiektów i zapytań w stylu obiektowym.
+
+2. **Zarządzanie Cyklem Życia Obiektów:** JPA oferuje mechanizmy do zarządzania cyklem życia obiektów. To oznacza, że programista może kontrolować, kiedy obiekty są tworzone, przechowywane, uaktualniane i usuwane w kontekście persystencji.
+
+3. **Zapytania w Stylu Obiektowym:** JPA zapewnia narzędzia do tworzenia zapytań w sposób zorientowany obiektowo, co oznacza, że zapytania są formułowane na podstawie klas i obiektów, a nie na podstawie języka SQL.
+
+4. **Transakcje:** JPA wspiera zarządzanie transakcjami, co jest istotne w kontekście aplikacji korzystających z baz danych.
+
+5. **Portabilność Pomiędzy Implementacjami:** Specyfikacja JPA zapewnia abstrakcję pomiędzy kodem aplikacji a konkretną implementacją ORM. To oznacza, że można zmieniać dostawcę JPA (implementację) bez konieczności modyfikacji kodu aplikacji, co nazywa się portowalnością.
+
+Popularne implementacje JPA to Hibernate, EclipseLink i Apache OpenJPA. Każda z tych implementacji oferuje swoje dodatkowe funkcje i rozszerzenia, ale spełniają one standardy określone w specyfikacji JPA.
+
+### podstawowe adnotacje hibernate z relacjami OneToMany
+
+Hibernate, jako implementacja JPA, dostarcza różne adnotacje do obsługi relacji pomiędzy encjami w modelu obiektowo-relacyjnym. Oto kilka podstawowych adnotacji Hibernate związanych z relacjami:
+
+1. **@Entity:**
+   - Oznacza, że klasa jest encją, którą można mapować na tabelę w bazie danych.
+
+    ```java
+    @Entity
+    public class Author {
+        // ...
+    }
+    ```
+
+2. **@Table:**
+   - Pozwala dostosować ustawienia tabeli, takie jak nazwa tabeli, schemat itp.
+
+    ```java
+    @Entity
+    @Table(name = "authors")
+    public class Author {
+        // ...
+    }
+    ```
+
+3. **@Id:**
+   - Oznacza pole jako identyfikator encji.
+
+    ```java
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    ```
+
+4. **@OneToMany:**
+   - Oznacza relację jeden-do-wielu, gdzie jedna encja ma wiele powiązanych encji.
+
+    ```java
+    @OneToMany(mappedBy = "author")
+    private List<Book> books;
+    ```
+
+5. **@ManyToOne:**
+   - Oznacza relację wiele-do-jednego, gdzie wiele encji jest powiązanych z jedną encją.
+
+    ```java
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+    ```
+
+6. **@JoinColumn:**
+   - Określa kolumnę, która będzie używana jako klucz obcy w tabeli związanej.
+
+    ```java
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+    ```
+
+7. **@JoinColumn (w @OneToMany):**
+   - W przypadku relacji jeden-do-wielu, określa, jak kolumna w encji wiele będzie powiązana z encją jedną.
+
+    ```java
+    @OneToMany(mappedBy = "author")
+    private List<Book> books;
+    ```
+
+8. **@GeneratedValue:**
+   - Określa, jak wartość identyfikatora powinna być generowana (na przykład, automatycznie, poprzez inkrementację).
+
+    ```java
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    ```
+
+Te są jedynie podstawowe adnotacje, a Hibernate oferuje również inne, które mogą być używane w bardziej zaawansowanych scenariuszach. Ważne jest zrozumienie kontekstu i potrzeb aplikacji podczas używania tych adnotacji.
+
+### czym jest fetchType
+
+Atrybut `fetch` w adnotacjach związanych z relacjami w Hibernate (lub w ogóle w JPA - Java Persistence API) określa strategię ładowania powiązanych obiektów. Atrybut ten wpływa na to, jak Hibernate powinien zachować się, gdy próbuje pobrać powiązane obiekty z bazy danych w trakcie operacji zapytania.
+
+Istnieją dwie podstawowe strategie ładowania w kontekście Hibernate:
+
+1. **FetchType.LAZY (leniwe ładowanie):**
+   - Oznacza, że powiązane obiekty nie są pobierane od razu podczas zapytania o główny obiekt, ale są ładowane dopiero w momencie, gdy są faktycznie potrzebne.
+   - Jest to strategia bardziej wydajna w sytuacjach, gdy nie zawsze potrzebujesz pełnych powiązanych obiektów.
+
+    ```java
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    private List<Book> books;
+    ```
+
+2. **FetchType.EAGER (natychmiastowe ładowanie):**
+   - Oznacza, że powiązane obiekty są natychmiastowo ładowane razem z głównym obiektem w jednym zapytaniu SQL.
+   - Jest to strategia przydatna, gdy wiesz, że zawsze będziesz potrzebować pełnych powiązanych obiektów.
+
+    ```java
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    private List<Book> books;
+    ```
+
+Domyślnie, jeśli nie jest określona strategia ładowania (tj. `fetch` nie jest ustawione), używana jest strategia domyślna dla danego rodzaju relacji. Dla relacji `@ManyToOne` i `@OneToOne` jest to `FetchType.EAGER`, a dla relacji `@OneToMany` i `@ManyToMany` jest to `FetchType.LAZY`.
+
+Wybór między leniwym a natychmiastowym ładowaniem zależy od specyfiki aplikacji i wymagań wydajnościowych. W praktyce często stosuje się leniwe ładowanie tam, gdzie to możliwe, aby unikać zbędnych zapytań do bazy danych i przyspieszyć operacje pobierania danych.
+
+Atrybut `cascade` w adnotacjach związanych z relacjami w Hibernate (lub ogólnie w JPA - Java Persistence API) określa, które operacje powinny być propagowane z jednego obiektu encji na powiązany obiekt encji. Innymi słowy, `cascade` definiuje, jakie operacje na jednym obiekcie encji powinny wpływać na powiązane obiekty encji.
+
+Atrybut `cascade` może przyjąć różne wartości (typy operacji), które decydują o tym, które operacje są kaskadowane. Niektóre z najczęściej używanych wartości `CascadeType` to:
+
+1. **CascadeType.ALL:** Kaskaduje wszystkie operacje, tj. zapis, odczyt, aktualizację i usunięcie. Oznacza to, że operacje na jednym obiekcie encji będą miały wpływ na powiązane obiekty encji.
+
+    ```java
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    private List<Book> books;
+    ```
+
+2. **CascadeType.PERSIST:** Kaskaduje operację persist (zapis). Oznacza to, że gdy zostanie zapisany obiekt encji, zapisane zostaną również powiązane obiekty encji.
+
+    ```java
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "author_id")
+    private Author author;
+    ```
+
+3. **CascadeType.MERGE:** Kaskaduje operację merge (łączenie). Oznacza to, że gdy zostanie wykonane scalenie na obiekcie encji, operacja ta zostanie również wykonana na powiązanych obiektach encji.
+
+    ```java
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "author_id")
+    private Author author;
+    ```
+
+4. **CascadeType.REMOVE:** Kaskaduje operację remove (usuwanie). Oznacza to, że gdy zostanie usunięty obiekt encji, zostaną również usunięte powiązane obiekty encji.
+
+    ```java
+    @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
+    private List<Book> books;
+    ```
+
+5. **CascadeType.REFRESH:** Kaskaduje operację refresh (odświeżanie). Oznacza to, że gdy zostanie odświeżony obiekt encji, operacja ta zostanie również wykonana na powiązanych obiektach encji.
+
+    ```java
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "author_id")
+    private Author author;
+    ```
+
+6. **CascadeType.DETACH:** Kaskaduje operację detach (odłączanie). Oznacza to, że gdy zostanie odłączony obiekt encji, operacja ta zostanie również wykonana na powiązanych obiektach encji.
+
+    ```java
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "author_id")
+    private Author author;
+    ```
+
+Warto dobrać odpowiednie wartości `CascadeType` w zależności od konkretnych potrzeb aplikacji i wymagań dotyczących zarządzania cyklem życia encji.
+
+Domyślnie w kontekście Hibernate i JPA (Java Persistence API), jeśli nie zostanie podana żadna wartość dla atrybutu `cascade` w adnotacjach związanych z relacjami, takich jak `@OneToMany` czy `@ManyToOne`, to zachowanie kaskadowe jest wyłączone (`CascadeType.NONE`).
+
+Innymi słowy, jeżeli adnotacja wygląda na przykład tak:
+
+```java
+@OneToMany(mappedBy = "author")
+private List<Book> books;
+```
+
+To oznacza, że operacje na obiekcie `Author` nie będą miały wpływu na operacje powiązane z obiektami `Book`. Nie zostanie automatycznie wywołane zapisywanie (`persist`), łączenie (`merge`), usuwanie (`remove`) itp. na obiektach `Book` w wyniku operacji na obiekcie `Author`.
+
+Jeśli chodzi o inne operacje, takie jak `refresh` czy `detach`, to domyślnie również są wyłączone, chyba że zostaną jawnie dodane do atrybutu `cascade`. Domyślnie nie są kaskadowane.
+
+Warto zaznaczyć, że domyślne zachowanie może się różnić w zależności od dostawcy JPA (Hibernate, EclipseLink, itp.), jednak zazwyczaj jest to ustawione na `CascadeType.NONE`.
+
+### czym jest orphanRemoval
+
+Atrybut `orphanRemoval` w kontekście Hibernate i JPA (Java Persistence API) odnosi się do zachowania kaskadowego związane z usuwaniem "osieroconych" (ang. orphan) obiektów encji. Obiekty "osierocone" to te, które zostały odłączone od swojego obiektu nadrzędnego (encji właściciela) i nie mają już z nim powiązania.
+
+Aby lepiej zrozumieć `orphanRemoval`, przyjrzyjmy się sytuacji, w której mamy relację `@OneToMany` między dwoma encjami: `Author` i `Book`. Dla tej relacji mówimy, że `Author` jest właścicielem relacji, a `Book` jest właścicielem obiektu.
+
+```java
+@Entity
+public class Author {
+    @OneToMany(mappedBy = "author", orphanRemoval = true)
+    private List<Book> books;
+    // ...
+}
+
+@Entity
+public class Book {
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+    // ...
+}
+```
+
+W tym przypadku, gdy `orphanRemoval` jest ustawione na `true` dla relacji `books` w encji `Author`, to oznacza, że jeśli jakieś obiekty `Book` zostaną usunięte z listy `books` w `Author` (czyli staną się "osierocone"), to zostaną one automatycznie usunięte z bazy danych.
+
+Przykład:
+
+```java
+Author author = entityManager.find(Author.class, authorId);
+Book bookToRemove = author.getBooks().get(0);
+author.getBooks().remove(bookToRemove); // Usunięcie z listy "books"
+
+// W sytuacji, gdy orphanRemoval jest ustawione na true, poniższa operacja usuwa obiekt "bookToRemove" z bazy danych.
+// W przypadku orphanRemoval=false, obiekt "bookToRemove" pozostanie w bazie danych, ale bez powiązania z "author".
+entityManager.flush();
+```
+
+Ustawienie `orphanRemoval` na `true` jest używane, gdy chcemy, aby obiekty powiązane były usuwane wraz z obiektem nadrzędnym w sytuacji, gdy zostaną one usunięte z listy (lub kolekcji) obiektów nadrzędnych. To jest przydatne w sytuacjach, gdzie chcemy utrzymać spójność i integrować cykle życia obiektów. Jednak należy używać tego atrybutu ostrożnie, ponieważ może prowadzić do nieoczekiwanych usunięć, szczególnie w sytuacjach, gdy obiekty `Book` mogą być używane w innych kontekstach czy przez inne obiekty.
+
+Czyli jak książka nie będzie miała autora to zostanie usunięta, tak?
+
+Tak, jeśli `orphanRemoval` jest ustawione na `true` dla relacji `@OneToMany` między encją `Author` a `Book`, to usunięcie książki z listy książek autora spowoduje również jej fizyczne usunięcie z bazy danych, jeśli nie jest powiązana z żadnym innym autorem.
+
+Przykład:
+
+```java
+@Entity
+public class Author {
+    @OneToMany(mappedBy = "author", orphanRemoval = true)
+    private List<Book> books;
+    // ...
+}
+
+@Entity
+public class Book {
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+    // ...
+}
+```
+
+```java
+Author author = entityManager.find(Author.class, authorId);
+Book bookToRemove = author.getBooks().get(0);
+author.getBooks().remove(bookToRemove); // Usunięcie z listy "books"
+
+// W sytuacji, gdy orphanRemoval jest ustawione na true, poniższa operacja usuwa obiekt "bookToRemove" z bazy danych,
+// ponieważ teraz obiekt "bookToRemove" nie ma przypisanego autora.
+entityManager.flush();
+```
+
+W tym przykładzie, gdy usuniesz książkę z listy książek autora i ustawisz `entityManager.flush()`, Hibernate zauważy, że obiekt `bookToRemove` nie jest już powiązany z żadnym autorem, co spowoduje usunięcie go z bazy danych.
+
+Jest to jedno z zastosowań `orphanRemoval` — automatyczne usuwanie obiektów, które stały się "osierocone", czyli nie mają już żadnego właściciela. Ważne jest, aby używać tego ustawienia z rozwagą, aby uniknąć nieoczekiwanych usunięć danych.
 
 ### baza H2 co to
 
-TODO uzupełnić
+H2 to system zarządzania relacyjnymi bazami danych (RDBMS) napisany w języku Java. Jest to lekka, szybka i osadzalna baza danych, co oznacza, że można ją łatwo integrować z aplikacjami napisanymi w języku Java. H2 obsługuje standardy SQL oraz oferuje funkcje zgodne z relacyjnym modelem danych.
+
+Oto kilka cech charakteryzujących bazę danych H2:
+
+1. **Osadzalna:** H2 jest często używane jako baza danych wbudowana w aplikacje Java. Można uruchamiać ją w trybie osadzonym, co oznacza, że działa jako część aplikacji, a dane są przechowywane lokalnie.
+
+2. **Lekka:** Baza danych H2 jest lekka i ma niewielki rozmiar, co czyni ją atrakcyjną opcją dla projektów o ograniczonym zasobach.
+
+3. **Wsparcie dla różnych trybów pracy:** H2 obsługuje różne tryby pracy, takie jak tryb osadzony, tryb klient-serwer, a także tryb pamięci podręcznej (in-memory), w którym dane są przechowywane w pamięci RAM i nie zapisywane na dysku.
+
+4. **Wsparcie dla różnych silników:** H2 obsługuje różne silniki bazodanowe, takie jak silnik plikowy, silnik pamięciowy, a także silniki dla trybów osadzonego i klient-serwer.
+
+5. **Obsługa wielu trybów zgodności:** H2 pozwala na pracę w różnych trybach zgodności, co pozwala na dostosowanie zachowania bazy danych do różnych standardów SQL i specyfikacji.
+
+6. **Wsparcie dla transakcji:** H2 obsługuje transakcje, co pozwala na wykonywanie operacji bazodanowych w sposób atomowy, spójny, izolowany i trwały (ACID).
+
+7. **Narzędzia do administracji:** H2 dostarcza narzędzia wiersza poleceń, narzędzia graficzne (np. H2 Console) oraz interfejsy programistyczne (API) dla Java, umożliwiające zarządzanie bazą danych.
+
+Baza danych H2 jest często używana w scenariuszach, gdzie konieczne jest proste, osadzone, a jednocześnie wydajne rozwiązanie bazodanowe dla aplikacji napisanych w języku Java.
 
 ### czym jest adnotacja @Transactional
 
-TODO uzupełnić
+Adnotacja `@Transactional` jest adnotacją używaną w kontekście programowania w języku Java, a szczególnie w aplikacjach opartych na Spring Framework. Adnotacja ta służy do oznaczania metod, które powinny być wykonane w ramach jednej transakcji.
+
+W kontekście baz danych i zarządzania transakcjami, adnotacja `@Transactional` działa na poziomie metody. Gdy metoda oznaczona tą adnotacją jest wywoływana, Spring automatycznie zarządza transakcją wokół tej metody. Oznacza to, że transakcja zostanie utworzona przed rozpoczęciem wykonania metody, a następnie zostanie zakończona po zakończeniu metody. W przypadku, gdy metoda zakończy się powodzeniem, transakcja zostanie zatwierdzona (commit). W przypadku wystąpienia wyjątku, transakcja zostanie cofnięta (rollback), przywracając bazę danych do stanu sprzed rozpoczęcia transakcji.
+
+Przykład użycia adnotacji `@Transactional` w Spring:
+
+```java
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+public class MyService {
+
+    @Autowired
+    private MyRepository myRepository;
+
+    @Transactional
+    public void performTransactionalOperation() {
+        // Operacje bazodanowe
+        myRepository.save(entity1);
+        myRepository.save(entity2);
+
+        // Inne operacje
+        // ...
+
+        // Jeśli ta metoda zakończy się powodzeniem, transakcja zostanie zatwierdzona.
+        // W przypadku wyjątku, transakcja zostanie cofnięta.
+    }
+}
+```
+
+W powyższym przykładzie, metoda `performTransactionalOperation` została oznaczona adnotacją `@Transactional`. Oznacza to, że wszystkie operacje bazodanowe wykonywane wewnątrz tej metody będą zarządzane przez transakcję. Jeśli któraś z tych operacji zakończy się niepowodzeniem (np. wystąpi wyjątek), transakcja zostanie cofnięta, przywracając bazę danych do stanu przed rozpoczęciem transakcji. W przeciwnym razie, gdy metoda zakończy się powodzeniem, transakcja zostanie zatwierdzona.
 
 ## Bazy danych:
 
