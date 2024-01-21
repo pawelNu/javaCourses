@@ -1,77 +1,77 @@
 # springBootJavaZagadnienia
 
-- [springBootJavaZagadnienia](#springbootjavazagadnienia)
-  - [Java](#java)
-    - [czym jest java streams (najważniejsze to znać .filter() .map() .findFirst() .toList())](#czym-jest-java-streams-najważniejsze-to-znać-filter-map-findfirst-tolist)
-    - [przetwarzanie sekwencyjne i równoległe](#przetwarzanie-sekwencyjne-i-równoległe)
-    - [czym jest pojo](#czym-jest-pojo)
-    - [czym są typy generyczne w java (malo ich używamy)](#czym-są-typy-generyczne-w-java-malo-ich-używamy)
-    - [czym jest clean code, zasady kiss, yagni, dry](#czym-jest-clean-code-zasady-kiss-yagni-dry)
-    - [czym jest java optional](#czym-jest-java-optional)
-    - [NullPointerException](#nullpointerexception)
-    - [czym jest ternary operator w java](#czym-jest-ternary-operator-w-java)
-  - [Spring](#spring)
-    - [adnotacja Autowired co to](#adnotacja-autowired-co-to)
-    - [adnotacja ComponentScan co to](#adnotacja-componentscan-co-to)
-    - [adnotacja Bean co to](#adnotacja-bean-co-to)
-    - [profile w spring (np development, production)](#profile-w-spring-np-development-production)
-    - [feign client co to](#feign-client-co-to)
-    - [adnotacja EntityScan co to](#adnotacja-entityscan-co-to)
-    - [czym jest programowanie aspektowe i jeden przykład wykorzystania](#czym-jest-programowanie-aspektowe-i-jeden-przykład-wykorzystania)
-    - [mapstruct](#mapstruct)
-    - [czym jest Slf4j](#czym-jest-slf4j)
-    - [czym jest DTO i po co sie stosuje](#czym-jest-dto-i-po-co-sie-stosuje)
-    - [czym jest ResponseEntity](#czym-jest-responseentity)
-    - [w jakim celu przydatna jest baza elasticsearch](#w-jakim-celu-przydatna-jest-baza-elasticsearch)
-    - [czym jest multitenancy](#czym-jest-multitenancy)
-    - [adnotacja @ConditionalOnProperty](#adnotacja-conditionalonproperty)
-  - [Hibernate](#hibernate)
-    - [czym jest method query, HQL](#czym-jest-method-query-hql)
-    - [adnotacja @EntityGraph - tylko do czego jest](#adnotacja-entitygraph---tylko-do-czego-jest)
-    - [problem bazodanowy N+1 czym on jest](#problem-bazodanowy-n1-czym-on-jest)
-    - [specyfikacja JPA czym jest](#specyfikacja-jpa-czym-jest)
-    - [podstawowe adnotacje hibernate z relacjami OneToMany](#podstawowe-adnotacje-hibernate-z-relacjami-onetomany)
-    - [czym jest fetchType](#czym-jest-fetchtype)
-    - [czym jest orphanRemoval](#czym-jest-orphanremoval)
-    - [baza H2 co to](#baza-h2-co-to)
-    - [czym jest adnotacja @Transactional](#czym-jest-adnotacja-transactional)
-  - [Bazy danych:](#bazy-danych)
-    - [powtórzyć podstawowe pojęcia bazodanowe (tabela, rekord, rodzaje relacji, indeks, klucz podst. obcy, constrainty)](#powtórzyć-podstawowe-pojęcia-bazodanowe-tabela-rekord-rodzaje-relacji-indeks-klucz-podst-obcy-constrainty)
-    - [Liquibase czym jest](#liquibase-czym-jest)
-  - [GIT](#git)
-    - [podstawowe pojęcia, branch, merge commit push pull](#podstawowe-pojęcia-branch-merge-commit-push-pull)
-    - [czym jest gitflow](#czym-jest-gitflow)
-    - [czym jest release oraz release candidate](#czym-jest-release-oraz-release-candidate)
-  - [Testy:](#testy)
-    - [co to jest test jednostkowy, asercje](#co-to-jest-test-jednostkowy-asercje)
-    - [co to jest mockito, co to given when then, czym jest mock, czym jest metoda verify w mockito](#co-to-jest-mockito-co-to-given-when-then-czym-jest-mock-czym-jest-metoda-verify-w-mockito)
-    - [czym są testy kontraktowe](#czym-są-testy-kontraktowe)
-    - [na czym polega TDD](#na-czym-polega-tdd)
-  - [Maven:](#maven)
-    - [w maven czym są sekcje dependency,build,plugin, scope provided](#w-maven-czym-są-sekcje-dependencybuildplugin-scope-provided)
-    - [czym są komendy maven: clean compile install](#czym-są-komendy-maven-clean-compile-install)
-  - [Bezpieczeństwo:](#bezpieczeństwo)
-    - [czym jest Keycloak (co to jest realm, uprawnienia)](#czym-jest-keycloak-co-to-jest-realm-uprawnienia)
-    - [czym jest token JWT](#czym-jest-token-jwt)
-  - [Architektura](#architektura)
-    - [czym jest CQRS (dodatkowo czym jest readmodel)](#czym-jest-cqrs-dodatkowo-czym-jest-readmodel)
-    - [czym są mikroserwisy (oraz podstawowe pojęcia: api gateway, load balancer, circuit breaker)](#czym-są-mikroserwisy-oraz-podstawowe-pojęcia-api-gateway-load-balancer-circuit-breaker)
-    - [czym jest replikacja w mikroserwisach i kafka (co to jest topic w kafka)](#czym-jest-replikacja-w-mikroserwisach-i-kafka-co-to-jest-topic-w-kafka)
-    - [czym jest wzorzec backend for frontend](#czym-jest-wzorzec-backend-for-frontend)
-  - [Inne:](#inne)
-    - [czym jest lombok i podstawowe adnotacje](#czym-jest-lombok-i-podstawowe-adnotacje)
-    - [kody http 200,201,204,400,401,403,409,422](#kody-http-200201204400401403409422)
-    - [czym jest specyfikacja OpenAPI](#czym-jest-specyfikacja-openapi)
-    - [zasady restful api - podstawowe](#zasady-restful-api---podstawowe)
-    - [czym jest amazon S3](#czym-jest-amazon-s3)
-    - [czym jest CI/CD](#czym-jest-cicd)
-    - [kim jest osoba - DevOps](#kim-jest-osoba---devops)
-    - [na czym polega scrum, daily, review, retro, planning](#na-czym-polega-scrum-daily-review-retro-planning)
-    - [czym jest owasp - tylko wiedzieć](#czym-jest-owasp---tylko-wiedzieć)
-    - [domain driven design - definicja](#domain-driven-design---definicja)
-    - [do czego używa sie postman](#do-czego-używa-sie-postman)
-    - [czym jest docker, dockerfile, docker compose](#czym-jest-docker-dockerfile-docker-compose)
-    - [sama definicja czym jest kubernetes (co to jest pod), kibana, grafana](#sama-definicja-czym-jest-kubernetes-co-to-jest-pod-kibana-grafana)
+-   [springBootJavaZagadnienia](#springbootjavazagadnienia)
+    -   [Java](#java)
+        -   [czym jest java streams (najważniejsze to znać .filter() .map() .findFirst() .toList())](#czym-jest-java-streams-najważniejsze-to-znać-filter-map-findfirst-tolist)
+        -   [przetwarzanie sekwencyjne i równoległe](#przetwarzanie-sekwencyjne-i-równoległe)
+        -   [czym jest pojo](#czym-jest-pojo)
+        -   [czym są typy generyczne w java (malo ich używamy)](#czym-są-typy-generyczne-w-java-malo-ich-używamy)
+        -   [czym jest clean code, zasady kiss, yagni, dry](#czym-jest-clean-code-zasady-kiss-yagni-dry)
+        -   [czym jest java optional](#czym-jest-java-optional)
+        -   [NullPointerException](#nullpointerexception)
+        -   [czym jest ternary operator w java](#czym-jest-ternary-operator-w-java)
+    -   [Spring](#spring)
+        -   [adnotacja Autowired co to](#adnotacja-autowired-co-to)
+        -   [adnotacja ComponentScan co to](#adnotacja-componentscan-co-to)
+        -   [adnotacja Bean co to](#adnotacja-bean-co-to)
+        -   [profile w spring (np development, production)](#profile-w-spring-np-development-production)
+        -   [feign client co to](#feign-client-co-to)
+        -   [adnotacja EntityScan co to](#adnotacja-entityscan-co-to)
+        -   [czym jest programowanie aspektowe i jeden przykład wykorzystania](#czym-jest-programowanie-aspektowe-i-jeden-przykład-wykorzystania)
+        -   [mapstruct](#mapstruct)
+        -   [czym jest Slf4j](#czym-jest-slf4j)
+        -   [czym jest DTO i po co sie stosuje](#czym-jest-dto-i-po-co-sie-stosuje)
+        -   [czym jest ResponseEntity](#czym-jest-responseentity)
+        -   [w jakim celu przydatna jest baza elasticsearch](#w-jakim-celu-przydatna-jest-baza-elasticsearch)
+        -   [czym jest multitenancy](#czym-jest-multitenancy)
+        -   [adnotacja @ConditionalOnProperty](#adnotacja-conditionalonproperty)
+    -   [Hibernate](#hibernate)
+        -   [czym jest method query, HQL](#czym-jest-method-query-hql)
+        -   [adnotacja @EntityGraph - tylko do czego jest](#adnotacja-entitygraph---tylko-do-czego-jest)
+        -   [problem bazodanowy N+1 czym on jest](#problem-bazodanowy-n1-czym-on-jest)
+        -   [specyfikacja JPA czym jest](#specyfikacja-jpa-czym-jest)
+        -   [podstawowe adnotacje hibernate z relacjami OneToMany](#podstawowe-adnotacje-hibernate-z-relacjami-onetomany)
+        -   [czym jest fetchType](#czym-jest-fetchtype)
+        -   [czym jest orphanRemoval](#czym-jest-orphanremoval)
+        -   [baza H2 co to](#baza-h2-co-to)
+        -   [czym jest adnotacja @Transactional](#czym-jest-adnotacja-transactional)
+    -   [Bazy danych:](#bazy-danych)
+        -   [powtórzyć podstawowe pojęcia bazodanowe (tabela, rekord, rodzaje relacji, indeks, klucz podst. obcy, constrainty)](#powtórzyć-podstawowe-pojęcia-bazodanowe-tabela-rekord-rodzaje-relacji-indeks-klucz-podst-obcy-constrainty)
+        -   [Liquibase czym jest](#liquibase-czym-jest)
+    -   [GIT](#git)
+        -   [podstawowe pojęcia, branch, merge commit push pull](#podstawowe-pojęcia-branch-merge-commit-push-pull)
+        -   [czym jest gitflow](#czym-jest-gitflow)
+        -   [czym jest release oraz release candidate](#czym-jest-release-oraz-release-candidate)
+    -   [Testy:](#testy)
+        -   [co to jest test jednostkowy, asercje](#co-to-jest-test-jednostkowy-asercje)
+        -   [co to jest mockito, co to given when then, czym jest mock, czym jest metoda verify w mockito](#co-to-jest-mockito-co-to-given-when-then-czym-jest-mock-czym-jest-metoda-verify-w-mockito)
+        -   [czym są testy kontraktowe](#czym-są-testy-kontraktowe)
+        -   [na czym polega TDD](#na-czym-polega-tdd)
+    -   [Maven:](#maven)
+        -   [w maven czym są sekcje dependency,build,plugin, scope provided](#w-maven-czym-są-sekcje-dependencybuildplugin-scope-provided)
+        -   [czym są komendy maven: clean compile install](#czym-są-komendy-maven-clean-compile-install)
+    -   [Bezpieczeństwo:](#bezpieczeństwo)
+        -   [czym jest Keycloak (co to jest realm, uprawnienia)](#czym-jest-keycloak-co-to-jest-realm-uprawnienia)
+        -   [czym jest token JWT](#czym-jest-token-jwt)
+    -   [Architektura](#architektura)
+        -   [czym jest CQRS (dodatkowo czym jest readmodel)](#czym-jest-cqrs-dodatkowo-czym-jest-readmodel)
+        -   [czym są mikroserwisy (oraz podstawowe pojęcia: api gateway, load balancer, circuit breaker)](#czym-są-mikroserwisy-oraz-podstawowe-pojęcia-api-gateway-load-balancer-circuit-breaker)
+        -   [czym jest replikacja w mikroserwisach i kafka (co to jest topic w kafka)](#czym-jest-replikacja-w-mikroserwisach-i-kafka-co-to-jest-topic-w-kafka)
+        -   [czym jest wzorzec backend for frontend](#czym-jest-wzorzec-backend-for-frontend)
+    -   [Inne:](#inne)
+        -   [czym jest lombok i podstawowe adnotacje](#czym-jest-lombok-i-podstawowe-adnotacje)
+        -   [kody http 200,201,204,400,401,403,409,422](#kody-http-200201204400401403409422)
+        -   [czym jest specyfikacja OpenAPI](#czym-jest-specyfikacja-openapi)
+        -   [zasady restful api - podstawowe](#zasady-restful-api---podstawowe)
+        -   [czym jest amazon S3](#czym-jest-amazon-s3)
+        -   [czym jest CI/CD](#czym-jest-cicd)
+        -   [kim jest osoba - DevOps](#kim-jest-osoba---devops)
+        -   [na czym polega scrum, daily, review, retro, planning](#na-czym-polega-scrum-daily-review-retro-planning)
+        -   [czym jest owasp - tylko wiedzieć](#czym-jest-owasp---tylko-wiedzieć)
+        -   [domain driven design - definicja](#domain-driven-design---definicja)
+        -   [do czego używa sie postman](#do-czego-używa-sie-postman)
+        -   [czym jest docker, dockerfile, docker compose](#czym-jest-docker-dockerfile-docker-compose)
+        -   [sama definicja czym jest kubernetes (co to jest pod), kibana, grafana](#sama-definicja-czym-jest-kubernetes-co-to-jest-pod-kibana-grafana)
 
 ## Java
 
@@ -1097,10 +1097,10 @@ Problem N+1 w kontekście baz danych występuje, gdy w trakcie pobierania danych
 
 Problem N+1 można opisać w następujący sposób:
 
-- N reprezentuje liczbę głównych obiektów (encji), które są pobierane z bazy danych.
-- +1 reprezentuje dodatkowe zapytanie dla każdego z tych obiektów w celu pobrania powiązanych obiektów (relacji).
+-   N reprezentuje liczbę głównych obiektów (encji), które są pobierane z bazy danych.
+-   +1 reprezentuje dodatkowe zapytanie dla każdego z tych obiektów w celu pobrania powiązanych obiektów (relacji).
 
-Na przykład, załóżmy, że masz listę autorów, a dla każdego autora chcesz pobrać jego książki. Jeśli użyjesz leniwego ładowania (lazy loading) dla relacji między autorem a książkami, każde zapytanie do bazy danych może być osobnym zapytaniem o książki autora, co prowadzi do N+1 zapytań. 
+Na przykład, załóżmy, że masz listę autorów, a dla każdego autora chcesz pobrać jego książki. Jeśli użyjesz leniwego ładowania (lazy loading) dla relacji między autorem a książkami, każde zapytanie do bazy danych może być osobnym zapytaniem o książki autora, co prowadzi do N+1 zapytań.
 
 Przykład w Hibernate z leniwym ładowaniem:
 
@@ -1117,24 +1117,24 @@ Aby rozwiązać problem N+1, można zastosować różne techniki, takie jak:
 
 1. **Eager Loading:** Można zmienić strategię ładowania na "eager loading" dla danej relacji, co oznacza, że dane związane będą ładowane natychmiastowo razem z głównym zapytaniem.
 
-   ```java
-   @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
-   private List<Book> books;
-   ```
+    ```java
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    private List<Book> books;
+    ```
 
 2. **JOIN Fetching:** Można użyć operacji JOIN w zapytaniu SQL, aby złączyć dane główne z danymi powiązanymi w jednym zapytaniu.
 
-   ```sql
-   SELECT a FROM Author a JOIN FETCH a.books
-   ```
+    ```sql
+    SELECT a FROM Author a JOIN FETCH a.books
+    ```
 
 3. **Batch Fetching:** Można skorzystać z opcji batch fetching, aby zoptymalizować pobieranie danych.
 
-   ```java
-   @OneToMany(mappedBy = "author")
-   @BatchSize(size = 10) // Określenie rozmiaru paczki
-   private List<Book> books;
-   ```
+    ```java
+    @OneToMany(mappedBy = "author")
+    @BatchSize(size = 10) // Określenie rozmiaru paczki
+    private List<Book> books;
+    ```
 
 Dobieranie odpowiedniej strategii zależy od konkretnego przypadku i wymagań aplikacji, aby zminimalizować ilość zbędnych zapytań i poprawić wydajność systemu.
 
@@ -1161,7 +1161,8 @@ Popularne implementacje JPA to Hibernate, EclipseLink i Apache OpenJPA. Każda z
 Hibernate, jako implementacja JPA, dostarcza różne adnotacje do obsługi relacji pomiędzy encjami w modelu obiektowo-relacyjnym. Oto kilka podstawowych adnotacji Hibernate związanych z relacjami:
 
 1. **@Entity:**
-   - Oznacza, że klasa jest encją, którą można mapować na tabelę w bazie danych.
+
+    - Oznacza, że klasa jest encją, którą można mapować na tabelę w bazie danych.
 
     ```java
     @Entity
@@ -1171,7 +1172,8 @@ Hibernate, jako implementacja JPA, dostarcza różne adnotacje do obsługi relac
     ```
 
 2. **@Table:**
-   - Pozwala dostosować ustawienia tabeli, takie jak nazwa tabeli, schemat itp.
+
+    - Pozwala dostosować ustawienia tabeli, takie jak nazwa tabeli, schemat itp.
 
     ```java
     @Entity
@@ -1182,7 +1184,8 @@ Hibernate, jako implementacja JPA, dostarcza różne adnotacje do obsługi relac
     ```
 
 3. **@Id:**
-   - Oznacza pole jako identyfikator encji.
+
+    - Oznacza pole jako identyfikator encji.
 
     ```java
     @Id
@@ -1191,7 +1194,8 @@ Hibernate, jako implementacja JPA, dostarcza różne adnotacje do obsługi relac
     ```
 
 4. **@OneToMany:**
-   - Oznacza relację jeden-do-wielu, gdzie jedna encja ma wiele powiązanych encji.
+
+    - Oznacza relację jeden-do-wielu, gdzie jedna encja ma wiele powiązanych encji.
 
     ```java
     @OneToMany(mappedBy = "author")
@@ -1199,7 +1203,8 @@ Hibernate, jako implementacja JPA, dostarcza różne adnotacje do obsługi relac
     ```
 
 5. **@ManyToOne:**
-   - Oznacza relację wiele-do-jednego, gdzie wiele encji jest powiązanych z jedną encją.
+
+    - Oznacza relację wiele-do-jednego, gdzie wiele encji jest powiązanych z jedną encją.
 
     ```java
     @ManyToOne
@@ -1208,7 +1213,8 @@ Hibernate, jako implementacja JPA, dostarcza różne adnotacje do obsługi relac
     ```
 
 6. **@JoinColumn:**
-   - Określa kolumnę, która będzie używana jako klucz obcy w tabeli związanej.
+
+    - Określa kolumnę, która będzie używana jako klucz obcy w tabeli związanej.
 
     ```java
     @ManyToOne
@@ -1217,7 +1223,8 @@ Hibernate, jako implementacja JPA, dostarcza różne adnotacje do obsługi relac
     ```
 
 7. **@JoinColumn (w @OneToMany):**
-   - W przypadku relacji jeden-do-wielu, określa, jak kolumna w encji wiele będzie powiązana z encją jedną.
+
+    - W przypadku relacji jeden-do-wielu, określa, jak kolumna w encji wiele będzie powiązana z encją jedną.
 
     ```java
     @OneToMany(mappedBy = "author")
@@ -1225,7 +1232,8 @@ Hibernate, jako implementacja JPA, dostarcza różne adnotacje do obsługi relac
     ```
 
 8. **@GeneratedValue:**
-   - Określa, jak wartość identyfikatora powinna być generowana (na przykład, automatycznie, poprzez inkrementację).
+
+    - Określa, jak wartość identyfikatora powinna być generowana (na przykład, automatycznie, poprzez inkrementację).
 
     ```java
     @Id
@@ -1242,8 +1250,9 @@ Atrybut `fetch` w adnotacjach związanych z relacjami w Hibernate (lub w ogóle 
 Istnieją dwie podstawowe strategie ładowania w kontekście Hibernate:
 
 1. **FetchType.LAZY (leniwe ładowanie):**
-   - Oznacza, że powiązane obiekty nie są pobierane od razu podczas zapytania o główny obiekt, ale są ładowane dopiero w momencie, gdy są faktycznie potrzebne.
-   - Jest to strategia bardziej wydajna w sytuacjach, gdy nie zawsze potrzebujesz pełnych powiązanych obiektów.
+
+    - Oznacza, że powiązane obiekty nie są pobierane od razu podczas zapytania o główny obiekt, ale są ładowane dopiero w momencie, gdy są faktycznie potrzebne.
+    - Jest to strategia bardziej wydajna w sytuacjach, gdy nie zawsze potrzebujesz pełnych powiązanych obiektów.
 
     ```java
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
@@ -1251,8 +1260,9 @@ Istnieją dwie podstawowe strategie ładowania w kontekście Hibernate:
     ```
 
 2. **FetchType.EAGER (natychmiastowe ładowanie):**
-   - Oznacza, że powiązane obiekty są natychmiastowo ładowane razem z głównym obiektem w jednym zapytaniu SQL.
-   - Jest to strategia przydatna, gdy wiesz, że zawsze będziesz potrzebować pełnych powiązanych obiektów.
+
+    - Oznacza, że powiązane obiekty są natychmiastowo ładowane razem z głównym obiektem w jednym zapytaniu SQL.
+    - Jest to strategia przydatna, gdy wiesz, że zawsze będziesz potrzebować pełnych powiązanych obiektów.
 
     ```java
     @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
